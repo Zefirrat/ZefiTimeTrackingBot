@@ -3,23 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Zefi.Telegram.Bot.Constants;
 
 namespace Zefi.Telegram.Bot.TimeTracking.Db.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    const string DbTypeEnvironmentName = "DbType";
-    const string DbNameEnvironmentName = "DbName";
-    const string DbPortEnvironmentName = "DbPort";
-    const string DbServerEnvironmentName = "DbServer";
-    const string DbUserNameEnvironmentName = "DbUserName";
-    const string DbPasswordEnvironmentName = "DbPassword";
     private const string PostgresType = "postgres";
     private const string MssqlType = "mssql";
     private const string InmemoryType = "inmemory";
 
-    private static IDictionary<string, Action<DbContextOptionsBuilder, string, string, string, string, string>>
-        _dbConfiguratorDictionary =
+    public static IDictionary<string, Action<DbContextOptionsBuilder, string, string, string, string, string>>
+        DbConfiguratorDictionary =
             new Dictionary<string, Action<DbContextOptionsBuilder, string, string, string, string, string>>()
             {
                 { PostgresType, _usePostgres }, { MssqlType, _useMssql }, { InmemoryType, _useInMemory }
@@ -30,24 +25,9 @@ public static class ServiceCollectionExtensions
     {
         var configuration = serviceCollection.BuildServiceProvider()
             .GetRequiredService<IConfiguration>();
-        var dbTypeOption = configuration.GetValue<string>(DbTypeEnvironmentName);
+        var dbTypeOption = configuration.GetValue<string>(EnvironmentConstants.DbTypeEnvironmentName);
 
-        serviceCollection.AddDbContext<TTDbContext>(opt =>
-            {
-                if (dbTypeOption != null)
-                {
-                    var dbName = configuration.GetValue<string>(DbNameEnvironmentName);
-                    var dbPort = configuration.GetValue<string>(DbPortEnvironmentName);
-                    var dbServer = configuration.GetValue<string>(DbServerEnvironmentName);
-                    var dbUserName = configuration.GetValue<string>(DbUserNameEnvironmentName);
-                    var dbPassword = configuration.GetValue<string>(DbPasswordEnvironmentName);
-                    _dbConfiguratorDictionary[dbTypeOption](opt, dbName, dbPort, dbServer, dbUserName, dbPassword);
-                }
-                else
-                {
-                    throw new NoNullAllowedException(DbTypeEnvironmentName);
-                }
-            },
+        serviceCollection.AddDbContext<TTDbContext>(opt => { ConfigureDb(dbTypeOption, configuration, opt); },
             ServiceLifetime.Scoped);
 
         var dbContext = serviceCollection.BuildServiceProvider()
@@ -61,6 +41,23 @@ public static class ServiceCollectionExtensions
         return serviceCollection;
     }
 
+    public static void ConfigureDb(string? dbTypeOption, IConfiguration configuration, DbContextOptionsBuilder opt)
+    {
+        if (dbTypeOption != null)
+        {
+            var dbName = configuration.GetValue<string>(EnvironmentConstants.DbNameEnvironmentName);
+            var dbPort = configuration.GetValue<string>(EnvironmentConstants.DbPortEnvironmentName);
+            var dbServer = configuration.GetValue<string>(EnvironmentConstants.DbServerEnvironmentName);
+            var dbUserName = configuration.GetValue<string>(EnvironmentConstants.DbUserNameEnvironmentName);
+            var dbPassword = configuration.GetValue<string>(EnvironmentConstants.DbPasswordEnvironmentName);
+            DbConfiguratorDictionary[dbTypeOption](opt, dbName, dbPort, dbServer, dbUserName, dbPassword);
+        }
+        else
+        {
+            throw new NoNullAllowedException(EnvironmentConstants.DbTypeEnvironmentName);
+        }
+    }
+
     private static void _usePostgres(
         DbContextOptionsBuilder optionsBuilder,
         string dbName,
@@ -69,7 +66,7 @@ public static class ServiceCollectionExtensions
         string dbUserName,
         string dbPassword)
     {
-        var connectionString = $"Server={dbServer}:{dbPort};Database={dbName};User={dbUserName};Password={dbPassword};";
+        var connectionString = $"Host={dbServer};Port={dbPort};Database={dbName};User ID={dbUserName};Password={dbPassword};Pooling=true;Connection Lifetime=0;";
         optionsBuilder.UseNpgsql(connectionString, dbOpt => dbOpt.EnableRetryOnFailure());
     }
 

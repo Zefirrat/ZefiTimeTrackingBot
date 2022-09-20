@@ -6,18 +6,25 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <UserSecretsId>7f1c8793-c996-4467-95f1-1501a6944849</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0-rc.1.22426.7">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0-rc.1.22426.10" />
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0-rc.1.22426.10" />
       <PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
       <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
       <PackageReference Include="Telegram.Bot" Version="18.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Zefi.Telegram.Bot.TimeTracking.Db.Extensions\Zefi.Telegram.Bot.TimeTracking.Db.Extensions.csproj" />
+      <ProjectReference Include="..\Zefi.Telegram.Bot.Constants\Zefi.Telegram.Bot.Constants.csproj" />
       <ProjectReference Include="..\Zefi.Telegram.Bot.TimeTracking.Db.Handlers\Zefi.Telegram.Bot.TimeTracking.Db.Handlers.csproj" />
     </ItemGroup>
 

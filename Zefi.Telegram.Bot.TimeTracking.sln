@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.TimeTrack
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.TimeTracking.Db.Handlers", "Zefi.Telegram.Bot.TimeTracking.Db.Handlers\Zefi.Telegram.Bot.TimeTracking.Db.Handlers.csproj", "{A561B144-AFB0-4983-B687-CB38C177C982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.TimeTracking.Db.Extensions", "Zefi.Telegram.Bot.TimeTracking.Db.Extensions\Zefi.Telegram.Bot.TimeTracking.Db.Extensions.csproj", "{C094E15A-E634-4AA2-B477-A42F823EB15A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.Constants", "Zefi.Telegram.Bot.Constants\Zefi.Telegram.Bot.Constants.csproj", "{6DDE62AB-0C16-4853-837E-FC96743C4DA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +32,9 @@ Global
 		{A561B144-AFB0-4983-B687-CB38C177C982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A561B144-AFB0-4983-B687-CB38C177C982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A561B144-AFB0-4983-B687-CB38C177C982}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C094E15A-E634-4AA2-B477-A42F823EB15A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C094E15A-E634-4AA2-B477-A42F823EB15A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C094E15A-E634-4AA2-B477-A42F823EB15A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C094E15A-E634-4AA2-B477-A42F823EB15A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDE62AB-0C16-4853-837E-FC96743C4DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDE62AB-0C16-4853-837E-FC96743C4DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDE62AB-0C16-4853-837E-FC96743C4DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDE62AB-0C16-4853-837E-FC96743C4DA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

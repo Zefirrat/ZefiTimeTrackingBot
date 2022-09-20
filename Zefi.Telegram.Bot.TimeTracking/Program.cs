@@ -8,13 +8,13 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Core;
 using Telegram.Bot;
+using Zefi.Telegram.Bot.Constants;
 using Zefi.Telegram.Bot.TimeTracking;
 using Zefi.Telegram.Bot.TimeTracking.Db;
 using Zefi.Telegram.Bot.TimeTracking.Db.Extensions;
 using Zefi.Telegram.Bot.TimeTracking.Db.Handlers.Handlers;
 using Zefi.Telegram.Bot.TimeTracking.Mediatr.Models.Notifications;
 
-const string EnvironmentPrefix = "ZefiBot_";
 
 var loggerConfiguration = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -27,12 +27,10 @@ logger.Information("Logger configured.");
 try
 {
     var host = Host.CreateDefaultBuilder();
-    host.ConfigureAppConfiguration((
-        hb,
-        cb) =>
+    host.ConfigureHostConfiguration((cb) =>
     {
         cb.AddUserSecrets(typeof(Program).Assembly, true);
-        cb.AddEnvironmentVariables(EnvironmentPrefix);
+        cb.AddEnvironmentVariables(EnvironmentConstants.EnvironmentPrefix);
     });
 
     host.ConfigureServices(services =>
