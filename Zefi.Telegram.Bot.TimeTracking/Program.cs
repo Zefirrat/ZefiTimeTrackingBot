@@ -72,4 +72,4 @@ catch (Exception e)
 }
 
 
-Console.WriteLine("Stopping...");
+logger.Information("Stopping...");
