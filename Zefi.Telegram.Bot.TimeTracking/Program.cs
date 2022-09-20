@@ -8,7 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Core;
 using Telegram.Bot;
+using Telegram.Bot.Types.Enums;
 using Zefi.Telegram.Bot.Constants;
+using Zefi.Telegram.Bot.Services;
 using Zefi.Telegram.Bot.TimeTracking;
 using Zefi.Telegram.Bot.TimeTracking.Db;
 using Zefi.Telegram.Bot.TimeTracking.Db.Extensions;
@@ -41,6 +43,7 @@ try
         services.AddTransient<ActionFactory>();
         services.AddMediatR(typeof(Program), typeof(UserAddressedHandler), typeof(UserAddressed), typeof(TTDbContext));
         services.AddDatabase();
+        services.AddSingleton<QueriesStore>();
     });
 
 

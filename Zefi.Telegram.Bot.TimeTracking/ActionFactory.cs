@@ -33,6 +33,7 @@ public class ActionFactory
                 return ActivatorUtilities.CreateInstance<InlineQueryProcess>(_serviceProvider);
                 break;
             case UpdateType.ChosenInlineResult:
+                return ActivatorUtilities.CreateInstance<ChoosenInlineResultProcess>(_serviceProvider);
                 break;
             case UpdateType.CallbackQuery:
                 break;

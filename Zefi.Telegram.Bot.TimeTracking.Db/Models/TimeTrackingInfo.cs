@@ -9,4 +9,9 @@ public class TimeTrackingInfo
     [Key]
     public Guid Id { get; private set; }
     public DateTime LastHelloSend { get; internal set; }
+
+    public void RefreshLastHelloSend()
+    {
+        LastHelloSend = DateTime.UtcNow;
+    }
 }

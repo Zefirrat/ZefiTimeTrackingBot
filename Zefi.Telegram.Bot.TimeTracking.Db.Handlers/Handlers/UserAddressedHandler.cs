@@ -32,9 +32,8 @@ public class UserAddressedHandler : INotificationHandler<UserAddressed>
         }
         else
         {
-            await _dbContext.TelegramUsers.AddAsync(
-                new TelegramUser(notification.UserId, notification.ChatId.GetValueOrDefault()),
-                cancellationToken);
+            _dbContext.TelegramUsers.Add(
+                new TelegramUser(notification.UserId, notification.ChatId.GetValueOrDefault()));
         }
     }
 }

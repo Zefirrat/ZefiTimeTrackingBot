@@ -25,6 +25,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Zefi.Telegram.Bot.Constants\Zefi.Telegram.Bot.Constants.csproj" />
+      <ProjectReference Include="..\Zefi.Telegram.Bot.Services\Zefi.Telegram.Bot.Services.csproj" />
       <ProjectReference Include="..\Zefi.Telegram.Bot.TimeTracking.Db.Handlers\Zefi.Telegram.Bot.TimeTracking.Db.Handlers.csproj" />
     </ItemGroup>
 

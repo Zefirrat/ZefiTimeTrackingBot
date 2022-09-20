@@ -18,10 +18,13 @@ public class SuggestInlineRequest : IRequest<SuggestInlineResponse>
 
 public class SuggestInlineResponse
 {
-    public SuggestInlineResponse(bool success)
+    public SuggestInlineResponse(bool success, string helloQueryId)
     {
         Success = success;
+        HelloQueryId = helloQueryId;
     }
+
+    public string HelloQueryId { get; }
 
     public bool Success { get; }
 }
