@@ -36,6 +36,7 @@ try
     host.ConfigureServices(services =>
     {
         services.AddLogging(l => { l.AddSerilog(logger); });
+        // ToDo: Fix error on migration creation
         services.AddSingleton<TelegramBotStarter>();
         services.AddTransient<ActionFactory>();
         services.AddMediatR(typeof(Program), typeof(UserAddressedHandler), typeof(UserAddressed), typeof(TTDbContext));
@@ -60,6 +61,7 @@ try
 
     var buildHost = host.Build();
 
+    // ToDo: Fix error on migration creation
     var botStarter = buildHost.Services.GetRequiredService<TelegramBotStarter>();
     botStarter.StartListen();
 
