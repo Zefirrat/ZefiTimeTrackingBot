@@ -5,12 +5,12 @@ namespace Zefi.Telegram.Bot.TimeTracking.Db;
 
 public class TTDbContext : DbContext
 {
-    protected override void OnConfiguring(
-        DbContextOptionsBuilder optionsBuilder)
+    public TTDbContext(
+        DbContextOptions<TTDbContext> context) :
+        base(context)
     {
-        Database.Migrate();
     }
-    
+
     public DbSet<MessageTemplate>  MessageTemplates  { get; private set; }
     public DbSet<TelegramUser>     TelegramUsers     { get; private set; }
     public DbSet<TimeTrackingInfo> TimeTrackingInfos { get; private set; }

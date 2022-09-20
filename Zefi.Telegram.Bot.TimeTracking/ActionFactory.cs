@@ -1,19 +1,26 @@
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Zefi.Telegram.Bot.TimeTracking.Actions;
+using Zefi.Telegram.Bot.TimeTracking.Mediatr.Models.Notifications;
 
 namespace Zefi.Telegram.Bot.TimeTracking;
 
 public class ActionFactory
 {
     private readonly IServiceProvider _serviceProvider;
-    public ActionFactory (IServiceProvider serviceProvider)
+    private readonly IMediator _mediator;
+
+    public ActionFactory (IServiceProvider serviceProvider, IMediator mediator)
     {
         _serviceProvider = serviceProvider;
+        _mediator = mediator;
     }
 
-    public ProcessAction CreateAction(Update update)
+    public async Task<ProcessAction?> CreateAction(
+        Update update,
+        CancellationToken cancellationToken)
     {
         switch (update.Type)
         {
@@ -22,6 +29,7 @@ public class ActionFactory
             case UpdateType.Message:
                 break;
             case UpdateType.InlineQuery:
+                await _mediator.Publish(new UserAddressed(update.InlineQuery.From.Id, null), cancellationToken);
                 return ActivatorUtilities.CreateInstance<InlineQueryProcess>(_serviceProvider);
                 break;
             case UpdateType.ChosenInlineResult:

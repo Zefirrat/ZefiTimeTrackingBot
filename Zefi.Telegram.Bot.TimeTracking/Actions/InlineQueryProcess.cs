@@ -19,7 +19,8 @@ public class InlineQueryProcess : ProcessAction
     }
 
     public override async Task PerformOperation(
-        Update update)
+        Update update,
+        CancellationToken cancellationToken)
     {
         _logger.LogDebug(update.InlineQuery.Query);
         await _botClient.AnswerInlineQueryAsync(update.InlineQuery.Id,
@@ -29,6 +30,7 @@ public class InlineQueryProcess : ProcessAction
                     $"{update.InlineQuery.Query}\n{DateTime.Now:t}",
                     new InputTextMessageContent($"{update.InlineQuery.Query}\n{DateTime.Now:t}"))
             },
-            isPersonal: false);
+            isPersonal: false,
+            cancellationToken: cancellationToken);
     }
 }

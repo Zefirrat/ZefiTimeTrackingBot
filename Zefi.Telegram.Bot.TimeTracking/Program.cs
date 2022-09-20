@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Data;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +9,10 @@ using Serilog;
 using Serilog.Core;
 using Telegram.Bot;
 using Zefi.Telegram.Bot.TimeTracking;
+using Zefi.Telegram.Bot.TimeTracking.Db;
+using Zefi.Telegram.Bot.TimeTracking.Db.Extensions;
+using Zefi.Telegram.Bot.TimeTracking.Db.Handlers.Handlers;
+using Zefi.Telegram.Bot.TimeTracking.Mediatr.Models.Notifications;
 
 const string EnvironmentPrefix = "ZefiBot_";
 
@@ -35,6 +40,8 @@ try
         services.AddLogging(l => { l.AddSerilog(logger); });
         services.AddSingleton<TelegramBotStarter>();
         services.AddTransient<ActionFactory>();
+        services.AddMediatR(typeof(Program), typeof(UserAddressedHandler), typeof(UserAddressed), typeof(TTDbContext));
+        services.AddDatabase();
     });
 
 
@@ -52,7 +59,7 @@ try
         var botClient = new TelegramBotClient(botToken);
         services.AddSingleton(botClient);
     });
-    
+
     var buildHost = host.Build();
 
     var botStarter = buildHost.Services.GetRequiredService<TelegramBotStarter>();

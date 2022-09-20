@@ -8,9 +8,11 @@
 
     <ItemGroup>
       <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0-rc.1.22426.10" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Zefi.Telegram.Bot.TimeTracking.Db\Zefi.Telegram.Bot.TimeTracking.Db.csproj" />
       <ProjectReference Include="..\Zefi.Telegram.Bot.TimeTracking.Mediatr.Models\Zefi.Telegram.Bot.TimeTracking.Mediatr.Models.csproj" />
     </ItemGroup>
 

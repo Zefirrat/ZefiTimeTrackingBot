@@ -6,12 +6,12 @@ public class UserAddressed : INotification
 {
     public UserAddressed(
         long userId,
-        long chatId)
+        long? chatId)
     {
         UserId = userId;
         ChatId = chatId;
     }
 
     public long UserId { get; private set; }
-    public long ChatId { get; private set; }
+    public long? ChatId { get; private set; }
 }
