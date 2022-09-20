@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.TimeTracking", "Zefi.Telegram.Bot.TimeTracking\Zefi.Telegram.Bot.TimeTracking.csproj", "{ABB8EC1E-020E-47A2-B1F1-63633931A1C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.TimeTracking.Db", "Zefi.Telegram.Bot.TimeTracking.Db\Zefi.Telegram.Bot.TimeTracking.Db.csproj", "{70A77700-0CEC-4AEA-83CC-3A0BCCA32032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.TimeTracking.Mediatr.Models", "Zefi.Telegram.Bot.TimeTracking.Mediatr.Models\Zefi.Telegram.Bot.TimeTracking.Mediatr.Models.csproj", "{CF55E783-0D5D-4D37-90EB-C83E0001CECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zefi.Telegram.Bot.TimeTracking.Db.Handlers", "Zefi.Telegram.Bot.TimeTracking.Db.Handlers\Zefi.Telegram.Bot.TimeTracking.Db.Handlers.csproj", "{A561B144-AFB0-4983-B687-CB38C177C982}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{ABB8EC1E-020E-47A2-B1F1-63633931A1C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB8EC1E-020E-47A2-B1F1-63633931A1C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABB8EC1E-020E-47A2-B1F1-63633931A1C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70A77700-0CEC-4AEA-83CC-3A0BCCA32032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70A77700-0CEC-4AEA-83CC-3A0BCCA32032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70A77700-0CEC-4AEA-83CC-3A0BCCA32032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70A77700-0CEC-4AEA-83CC-3A0BCCA32032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF55E783-0D5D-4D37-90EB-C83E0001CECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF55E783-0D5D-4D37-90EB-C83E0001CECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF55E783-0D5D-4D37-90EB-C83E0001CECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF55E783-0D5D-4D37-90EB-C83E0001CECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A561B144-AFB0-4983-B687-CB38C177C982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A561B144-AFB0-4983-B687-CB38C177C982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A561B144-AFB0-4983-B687-CB38C177C982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A561B144-AFB0-4983-B687-CB38C177C982}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
