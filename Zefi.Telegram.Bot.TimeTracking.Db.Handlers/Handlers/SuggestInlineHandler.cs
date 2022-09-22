@@ -74,7 +74,7 @@ public class SuggestInlineHandler : IRequestHandler<SuggestInlineRequest, Sugges
         {
             var inlineQueryBye = new InlineQueryResultArticle(new { byeMessage, telegramUserId }.GetHashCode().ToString(),
                 byeMessageText,
-                helloMessage);
+                byeMessage);
             return new Tuple<List<InlineQueryResult>, string>(new List<InlineQueryResult>()
             {
                 inlineQueryBye
